@@ -1,0 +1,25 @@
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.mat-expansion-panel {
+  background: inherit;
+}
+
+.mat-expansion-panel-content .mat-expansion-panel-body {
+  padding: 0px;
+}
+
+.mat-expansion-panel-content {
+  font: inherit;
+  font-size: 12px;
+}
+
+.mat-expansion-panel .mat-expansion-panel-header {
+  padding: inherit;
+  height: 20px;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 20px;
+}

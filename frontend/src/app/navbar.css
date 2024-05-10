@@ -1,0 +1,29 @@
+.mat-toolbar {
+  background-color: #43a047;
+  color: white;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 48px;
+}
+
+.mat-button {
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.tab-active {
+  background-color: darkgreen;
+}
+
+a.to-home-page,
+a.to-home-page:visited {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}

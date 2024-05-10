@@ -1,0 +1,90 @@
+<div class="logs-filter-bar">
+  <!-- Severity selector -->
+  <mat-form-field appearance="outline" class="filter-bar-text-field">
+    <mat-label>Severity</mat-label>
+    <mat-select id="severity-selector" [(value)]="severity" panelClass="log-severity-select-panel"
+      disableOptionCentering (selectionChange)="loadResultRecords()">
+      <mat-option [value]="option" *ngFor="let option of severities">{{ option }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Search input -->
+  <mat-form-field appearance="outline" class="filter-bar-text-field">
+    <mat-label>Search</mat-label>
+    <input matInput id="search-input" [(ngModel)]="searchKeyword" autocomplete="off" (keyup)="loadResultRecords()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Panel Toggler -->
+  <div class="filter-bar-btn">
+    <button mat-raised-button color="primary" (click)="toggleAllPanels = !toggleAllPanels">
+      {{ toggleAllPanels ? "Collapse All" : "Expand All" }}
+    </button>
+  </div>
+</div>
+
+<!-- Result records table -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 logs-view-table">
+
+  <!-- # column -->
+  <ng-container matColumnDef="sequenceNumber">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.sequenceNumber}} </td>
+  </ng-container>
+
+  <!-- timestamp column -->
+  <ng-container matColumnDef="timestamp">
+    <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+    <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+  </ng-container>
+
+  <!-- severity column -->
+  <ng-container matColumnDef="severity">
+    <th mat-header-cell *matHeaderCellDef> Severity </th>
+    <td mat-cell *matCellDef="let element"> {{element.severity}} </td>
+  </ng-container>
+
+  <!-- stage column -->
+  <ng-container matColumnDef="stage">
+    <th mat-header-cell *matHeaderCellDef> Stage </th>
+    <td mat-cell *matCellDef="let element"> {{element.stage}} </td>
+  </ng-container>
+
+  <!-- stage column -->
+  <ng-container matColumnDef="stepName">
+    <th mat-header-cell *matHeaderCellDef> Step Name </th>
+    <td mat-cell *matCellDef="let element"> {{ getStepName(element) }} </td>
+  </ng-container>
+
+  <!-- category column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Category </th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+  <!-- message column -->
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef> Message </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.message}}
+      <div *ngIf="element.sourceLocation" class="source-location">
+        <a *ngIf="element.sourceLocationLink" [href]="element.sourceLocationLink"
+          target="_blank">[{{element.sourceLocation}}]</a>
+        <div *ngIf="!element.sourceLocationLink">[{{element.sourceLocation}}]</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!--- raw column -->
+  <ng-container matColumnDef="json">
+    <th mat-header-cell *matHeaderCellDef> Json</th>
+    <td mat-cell *matCellDef="let element">
+      <toggle-json-viewer [json]="element.raw" [openPanel]="toggleAllPanels"></toggle-json-viewer>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row [class]="severityClass(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[100, 200, 300]" showFirstLastButtons>
+</mat-paginator>

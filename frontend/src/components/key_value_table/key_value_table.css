@@ -1,0 +1,19 @@
+.key-value-table .mat-expansion-panel .mat-expansion-panel-header:not(.mat-expanded) {
+  width: 280px;
+}
+
+.key-value-table .mat-expansion-panel {
+  width: fit-content;
+}
+
+table.key-value-table {
+  width: 100%;
+}
+
+.key-value-table .mat-column-key {
+  width: 30%;
+}
+
+.key-value-table.mat-column-value {
+  width: 70%;
+}

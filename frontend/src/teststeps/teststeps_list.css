@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+td.mat-cell,
+th.mat-header-cell {
+  padding: 0px 16px;
+}
+
+.icon-complete {
+  color:#43a047;
+  font-size: 20px;
+}
+
+.icon-error {
+  color: #e53935;
+  font-size: 20px;
+}
+
+.mat-column-name a {
+  color: #43a047;
+  cursor: pointer;
+}

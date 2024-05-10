@@ -1,0 +1,23 @@
+<div class="summary-bar" [class]="status">
+  <div class="summary-bar-content">
+    <div class="summary-bar-content-left">
+      <mat-icon aria-hidden="false">{{getStatusIcon()}}</mat-icon>
+      <div class="summary-bar-text">
+        <span class="summary-bar-name">{{name}}</span>
+        <span *ngIf="version"> v{{version}}</span>
+        <span> on {{startTime | date: 'full' }}</span>
+      </div>
+    </div>
+    <mat-chip-set class="summary-bar-chips">
+      <mat-chip class="summary-bar-chip" [class]="status">
+        <mat-icon aria-hidden="false">{{getStatusIcon()}}</mat-icon>
+        <span class="summary-bar-chip-result">{{status}}</span>
+      </mat-chip>
+      <mat-chip class="summary-bar-chip" *ngIf="result" [class]="result">
+        <mat-icon aria-hidden="false">{{getResultIcon()}}</mat-icon>
+        <span class="summary-bar-chip-result">{{result}}</span>
+      </mat-chip>
+    </mat-chip-set>
+  </div>
+  <div class="summary-bar-border"></div>
+</div>

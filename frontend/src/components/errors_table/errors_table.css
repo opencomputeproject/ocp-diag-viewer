@@ -1,0 +1,14 @@
+table.errors-table {
+  width: 100%;
+}
+
+ul.info-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+li.info-list-item a {
+  color: #43a047;
+  cursor: pointer;
+}
+

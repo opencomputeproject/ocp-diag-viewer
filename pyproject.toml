@@ -1,0 +1,127 @@
+[project]
+name = "ocp-diag-result-viewer"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "meltan-core-team", email = "meltan-core-team@google.com"},
+]
+dependencies = [
+    "bs4>=0.0.1",
+    "click>=8.1.3",
+    "immutabledict>=2.2.3",
+    "tabulate>=0.9.0",
+    "Flask>=2.2.3",
+    "gunicorn>=20.1.0",
+    "google-cloud-storage>=2.8.0",
+    "google-cloud-secret-manager==2.1.0",
+    "python-dotenv>=1.0.0",
+    "toml>=0.10.2",
+    "authlib>=1.2.1",
+]
+requires-python = ">=3.10,<3.11"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "tox-pdm>=0.6.1",
+    "pytest>=7.2.1",
+    "requests-mock>=1.10.0",
+    "pdm-packer>=0.6.0",
+]
+lint = [
+    "black>=22.12.0",
+    "flake8>=6.0.0",
+    "isort>=5.11.4",
+]
+
+[tool.pdm.build]
+includes = [
+  "viewer/",
+]
+
+[tool.pdm.scripts]
+[tool.pdm.scripts.client]
+call = "viewer.client.cli:main"
+env = {PYTHONDONTWRITEBYTECODE = "1"}
+
+[tool.pdm.scripts.client-build]
+shell = """
+    mkdir -p {args:.}/bin && pdm pack -m viewer.client.cli:main -c --compile --exe -o {args:.}/bin/ocp-diag-result-viewer -i '/usr/bin/env python3'
+    """
+
+[tool.pdm.scripts.test]
+shell = """
+   pytest tests
+"""
+
+[tool.pdm.scripts.lint]
+shell = """
+    set -e
+    echo "=> lint: isort"
+    isort --check viewer
+    echo "=> lint: black"
+    black --check viewer
+    echo "=> lint: flake8"
+    flake8 viewer
+"""
+
+[tool.pdm.scripts.format]
+shell = """
+    isort viewer
+    black viewer
+"""
+
+[tool.isort]
+profile = "black"
+line_length = 80
+
+[tool.black]
+line-length = 80
+
+[tool.pdm.scripts.insert-ocp-diag-result-tag]
+call = "viewer.server.insert_ocp_diag_result_data:insert_ocp_diag_result_data"
+
+[tool.pdm.scripts.remove-static-for-client]
+call = "viewer.client.remove_static_path:remove_static_path"
+
+[tool.pdm.scripts.frontend-build]
+shell = """
+    cd frontend
+    npm install
+    npm run build
+    cd ../
+    mkdir -p viewer/server/templates/
+    cp static/index.html viewer/server/templates/index.html
+    mkdir -p viewer/client/files
+    cp static/index.html viewer/client/files/index.html
+    cp static/main.js viewer/client/files/main.js
+    cp static/polyfills.js viewer/client/files/polyfills.js
+    cp static/runtime.js viewer/client/files/runtime.js
+    cp static/styles.css viewer/client/files/styles.css
+    pdm run insert-ocp-diag-result-tag
+    pdm run remove-static-for-client
+"""
+
+[tool.pdm.scripts.gae-deploy-build]
+shell = """
+    pdm run frontend-build
+    pdm install --prod
+    pdm export --prod -o requirements.txt
+"""
+
+[tool.pdm.scripts.gae-deploy]
+shell = """
+    pdm run gae-deploy-build
+    gcloud app deploy -q
+"""
+
+[tool.pdm.scripts.server]
+shell = """
+    pdm run frontend-build
+    flask --app 'viewer.server.main:app' run {args}
+"""

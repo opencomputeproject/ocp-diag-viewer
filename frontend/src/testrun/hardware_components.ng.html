@@ -1,0 +1,133 @@
+<div class="hardware-components">
+  <div class="filter-bar">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+
+    <!-- Panel Toggler -->
+    <button mat-raised-button color="primary" (click)="toggleAllPanels = !toggleAllPanels">
+      {{ toggleAllPanels ? "Collapse All" : "Expand All" }}
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- HardwareInfoId Column -->
+    <ng-container matColumnDef="hardwareInfoId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.hardwareInfoId}} </td>
+    </ng-container>
+
+    <!-- HostName Column -->
+    <ng-container matColumnDef="hostname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> HostName </th>
+      <td mat-cell *matCellDef="let element"> {{element.hostname}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Arena Column -->
+    <ng-container matColumnDef="arena">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Arena </th>
+      <td mat-cell *matCellDef="let element"> {{element.arena}} </td>
+    </ng-container>
+
+    <!-- Part Number -->
+    <ng-container matColumnDef="partNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Part Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.partNumber}} </td>
+    </ng-container>
+
+    <!-- Manufacturer -->
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Manufacturer </th>
+      <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+    </ng-container>
+
+    <!-- Part Type -->
+    <ng-container matColumnDef="partType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Part Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.partType}} </td>
+    </ng-container>
+    <!-- Mfg Part Number -->
+    <ng-container matColumnDef="mfgPartNumber" *ngIf="!isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mfg Part Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.mfgPartNumber}} </td>
+    </ng-container>
+    <!-- Fru Location Column -->
+    <ng-container matColumnDef="fruLocation" *ngIf="!isV2">
+      <th mat-header-cell *matHeaderCellDef> Fru Location </th>
+      <td mat-cell *matCellDef="let element">
+        <toggle-json-viewer [json]="element.fruLocation" [openPanel]="toggleAllPanels"></toggle-json-viewer>
+      </td>
+    </ng-container>
+
+    <!-- Component Location -->
+    <ng-container matColumnDef="componentLocation" *ngIf="!isV2">
+      <th mat-header-cell *matHeaderCellDef> Component Location </th>
+      <td mat-cell *matCellDef="let element">
+        <toggle-json-viewer [json]="element.componentLocation" [openPanel]="toggleAllPanels"></toggle-json-viewer>
+      </td>
+    </ng-container>
+
+    <!-- Manufacturer Part Number -->
+    <ng-container matColumnDef="manufacturerPartNumber" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mfg Part Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.manufacturerPartNumber}} </td>
+    </ng-container>
+    <!-- Location -->
+    <ng-container matColumnDef="location" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+
+    <!-- computerSystem -->
+    <ng-container matColumnDef="computerSystem" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Computer System </th>
+      <td mat-cell *matCellDef="let element"> {{element.computerSystem}} </td>
+    </ng-container>
+
+    <!-- odataId -->
+    <ng-container matColumnDef="odataId" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> OdataId </th>
+      <td mat-cell *matCellDef="let element"> {{element.odataId}} </td>
+    </ng-container>
+
+    <!-- serialNumber -->
+    <ng-container matColumnDef="serialNumber" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.serialNumber}} </td>
+    </ng-container>
+
+    <!-- Manager -->
+    <ng-container matColumnDef="manager" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Manager </th>
+      <td mat-cell *matCellDef="let element"> {{element.manager}} </td>
+    </ng-container>
+
+    <!-- version -->
+    <ng-container matColumnDef="version" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Version </th>
+      <td mat-cell *matCellDef="let element"> {{element.version}} </td>
+    </ng-container>
+
+    <!-- revision -->
+    <ng-container matColumnDef="revision" *ngIf="isV2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Revision </th>
+      <td mat-cell *matCellDef="let element"> {{element.revision}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no data. -->
+    <tr class="mat-row mat-no-data-row" *matNoDataRow>
+      <td class="mat-cell" colspan="100">No data available</td>
+    </tr>
+  </table>
+</div>

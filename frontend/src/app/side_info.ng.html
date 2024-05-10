@@ -1,0 +1,8 @@
+<div class="side-info">
+  <!-- Title -->
+  <div class="side-info-title"> {{sideInfo.title}} </div>
+  <!-- Subtitle -->
+  <div class="side-info-subtitle"> {{sideInfo.subtitle}} </div>
+  <!-- Summary table -->
+  <key-value-table [dataSource]="sideInfo.info" [openAllPanels]="true" id="info-table"></key-value-table>
+</div>

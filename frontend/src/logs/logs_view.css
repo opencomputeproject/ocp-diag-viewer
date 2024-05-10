@@ -1,0 +1,114 @@
+.logs-filter-bar {
+  display: flex;
+  padding: 16px 12px 12px;
+  gap: 12px;
+  align-items: initial;
+}
+
+.mat-form-field-wrapper {
+  padding: 0px;
+}
+
+.mdc-text-field {
+  align-items: center !important;
+}
+
+.filter-bar-btn {
+  display: flex;
+  height: auto;
+  margin-bottom: 23px;
+  align-items: center;
+}
+
+.mat-table {
+  box-shadow: none;
+}
+
+.mat-header-row {
+  background-color: #e0e0e0;
+  height: 48px;
+}
+
+.mat-row {
+  height: 48px;
+}
+
+table.mat-table {
+  width: 100%;
+}
+
+.mat-cell {
+  border-right: 1px solid rgba(0, 0, 0, .12);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.mat-header-cell {
+  border-right: 1px solid rgba(0, 0, 0, .12);
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.mat-column-sequenceNumber {
+  width: 40px;
+}
+
+.mat-column-timestamp {
+  width: 216px;
+}
+
+.mat-column-severity {
+  width: 64px;
+}
+
+.mat-column-stage {
+  width: 80px;
+}
+
+.mat-column-category {
+  width: 100px;
+}
+
+.mat-column-json {
+  max-width: 200px;
+}
+
+.log-severity-trace {
+  background-color: #f5f5f5;
+}
+
+.log-severity-debug {
+  background-color: #f5f5f5;
+}
+
+.log-severity-info {
+  background-color: #fff;
+}
+
+.log-severity-warning {
+  background-color: #ffefd5;
+}
+
+.log-severity-error {
+  background-color: #ffe4e1;
+}
+
+.log-severity-fatal {
+  background-color: #ffb6c1;
+}
+
+.logs-view-table.mat-mdc-table .mdc-data-table__header-row {
+  background-color: #e0e0e0;
+}
+
+.logs-view-table .mdc-data-table__cell,
+.logs-view-table .mdc-data-table__header-cell {
+  border-right: 1px solid #0000001f;
+}
+
+.source-location {
+  display: flex;
+  flex-flow: row-reverse;
+  font-weight: 200;
+  font-size: 12px;
+}

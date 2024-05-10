@@ -1,0 +1,39 @@
+ocp-diag-result-viewer
+*.pyc
+.venv
+.pdm.toml
+.pdm-python
+__pypackages__
+.python-version
+.tox
+testdir/
+*.swp
+
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Generated build files
+/static/*
+/viewer/server/templates/index.html
+/viewer/client/files/*
+requirements.txt
+/artifacts/*

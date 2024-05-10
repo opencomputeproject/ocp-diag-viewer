@@ -1,0 +1,78 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Remove the scroller of seveirty select in logview */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.log-severity-select-panel {
+  max-height: fit-content !important;
+}
+
+/* Dense form fields */
+.mat-form-field-infix {
+  padding: 0.5em 0 0.5em 0 !important;
+}
+
+/* Dense input field */
+.mat-form-field:not(.mat-focused) .mat-form-field-label[for="search-input"] {
+  top: 1.34375em;
+}
+
+/* Form filelds paddings */
+.mat-form-field-wrapper {
+  padding: 12px 12px 12px 0px;
+}
+
+/* Table no data row */
+.mat-no-data-row td {
+  padding: 16px !important;
+}
+
+.mdc-text-field {
+  align-items: center !important;
+}
+
+toggle-json-viewer .mat-expansion-panel {
+  overflow: visible;
+}
+
+.mat-mdc-chip-action-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-mdc-form-field-infix {
+  min-height: max-content;
+}
+
+.mat-mdc-form-field {
+  min-width: 200px;
+  width: 30%;
+}
+
+.logs-filter-bar .filter-bar-text-field .mat-mdc-text-field-wrapper,
+.series-selector .mat-mdc-text-field-wrapper {
+  height: 42px;
+}
+
+.logs-filter-bar .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label,
+.series-selector .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 20px;
+}
+
+.teststep-tabs .mat-mdc-tab-list {
+  flex-grow: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 8px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

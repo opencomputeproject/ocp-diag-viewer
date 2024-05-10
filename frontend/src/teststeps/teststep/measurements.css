@@ -1,0 +1,38 @@
+.measurements table {
+  width: 100%;
+}
+
+.measurements td.mat-cell,
+th.mat-header-cell {
+  padding: 0px 16px;
+}
+
+.measurements .mat-column-validIcon {
+  width: 28px;
+}
+
+.measurements .icon-pass {
+  color: #43a047;
+  font-size: 20px;
+}
+
+.measurements .icon-fail {
+  color: #e53935;
+  font-size: 20px;
+}
+
+.measurements .mat-column-hardwareInfo a {
+  color: #43a047;
+  cursor: pointer;
+}
+
+.measurements .series-selector {
+  min-width: 320px;
+  padding-left: 12px;
+  padding-top: 23px;
+}
+
+.series-selector .mat-mdc-text-field-wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

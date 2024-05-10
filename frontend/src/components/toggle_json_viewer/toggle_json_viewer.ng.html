@@ -1,0 +1,9 @@
+<mat-expansion-panel
+  [expanded]="openPanel"
+  (opened)="renderState = true"
+  (afterCollapse)="renderState = false"
+  >
+    <mat-expansion-panel-header>
+    </mat-expansion-panel-header>
+    <ngx-json-viewer *ngIf="renderState" [depth]="2" [json]="json"></ngx-json-viewer>
+</mat-expansion-panel>

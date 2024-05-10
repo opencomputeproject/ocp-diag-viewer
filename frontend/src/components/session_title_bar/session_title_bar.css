@@ -1,0 +1,9 @@
+div.session-title-bar {
+  background-color: #d3d3d3;
+  padding: 4px;
+}
+
+div.session-title-bar > span {
+  font-size: 1.25rem;
+  font-weight: 500;
+}

@@ -1,0 +1,9 @@
+   Seq Num | Timestamp   | Severity   | Stage   | Name   | Category   | Message
+-----------+-------------+------------+---------+--------+------------+-----------------------------
+         0 | timestamp 0 | [92mINFO[0m       | Run     |        | Start      | NAME - v1
+         1 | timestamp 1 | [0mDEBUG[0m      | Run     |        | Log        | Text 0
+         2 | timestamp 2 | [92mINFO[0m       | Run     |        | Log        | Text 1
+         3 | timestamp 3 | [93mWARNING[0m    | Run     |        | Log        | Text 2
+         4 | timestamp 4 | [91mERROR[0m      | Run     |        | Log        | Text 3
+         5 | timestamp 5 | [1m[91mFATAL[0m      | Run     |        | Log        | Text 4
+         6 | timestamp 6 | [93mWARNING[0m    | Run     |        | End        | NAME : ERROR/NOT_APPLICABLE

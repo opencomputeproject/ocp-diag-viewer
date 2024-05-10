@@ -1,0 +1,38 @@
+.diagnoses table {
+  width: 100%;
+}
+
+.diagnoses td.mat-cell,
+th.mat-header-cell {
+  padding: 0px 16px;
+}
+
+.diagnoses .mat-column-typeIcon {
+  width: 28px;
+}
+
+.diagnoses .icon-pass {
+  color:#43a047;
+  font-size: 20px;
+}
+
+.diagnoses .icon-fail {
+  color: #e53935;
+  font-size: 20px;
+}
+
+.diagnoses .icon-unknown {
+  color: #ff8c00;
+  font-size: 20px;
+}
+
+.diagnoses ul.info-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.diagnoses li.info-list-item a {
+  color: #43a047;
+  cursor: pointer;
+}
+

@@ -1,0 +1,30 @@
+TESTING = true
+ENV = "testing"
+DEBUG = true
+
+# Storage
+# Name of the bucket on Google Cloud Storage
+# STORAGE_GCS_BUCKET_NAME = "bucket_name"
+
+# Upload
+# Allowed urls for uploading.
+# UPLOAD_ALLOW_URLS = [{
+#   scheme = 'https',
+#   netloc = 'storage.googleapis.com',
+#   path_regex = '.*'
+# }]
+
+# Source Location maps
+#   match_regex: matched source location file path.
+#   link_formt: translated link format.
+# SOURCE_LOCATION_MAPS = [{
+#  match_regex = "src/.+",
+#  link_format = "https://source.example.com/src/{file}?line={line}",
+# }]
+
+# Auth & Security
+# SESSION_SECRET = ""
+# OPENID_ALLOW_USER_REGEX = ""
+# OPENID_SERVER_META_DATA_URL = "https://accounts.google.com/.well-known/openid-configuration"
+# OPENID_CLIENT_ID = ""
+# OPENID_CLIENT_SECRET = ""

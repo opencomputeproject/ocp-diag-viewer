@@ -1,0 +1,98 @@
+div.summary-bar {
+  display: block;
+  position: relative;
+}
+
+div.summary-bar-content {
+  display: flex;
+  align-items: center;
+  line-height: 24px;
+  padding: 0 16px;
+}
+
+div.summary-bar-content mat-icon {
+  margin-right: 16px;
+}
+
+div.summary-bar-text {
+  margin-right: 15px;
+}
+
+div.summary-bar-content::before {
+  background-color: currentColor;
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  opacity: .12;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+div.summary-bar-content .summary-bar-name {
+  font-weight: bolder;
+}
+
+div.summary-bar.COMPLETE {
+  color: #4caf50;
+}
+
+div.summary-bar.ERROR {
+  color: #ff5252;
+}
+
+div.summary-bar.UNKNOWN,
+div.summary-bar.SKIPPED {
+  color: #fb8c00;
+}
+
+div.summary-bar-border {
+  border-style: solid;
+  border-width: thin;
+  opacity: .26;
+}
+
+mat-chip-list.summary-bar-chips {
+  position: absolute;
+  right: 16px;
+}
+
+mat-chip.summary-bar-chip {
+  font-size: 12px;
+  margin: 4px 0px 4px 4px;
+  min-height: 24px;
+}
+
+mat-chip.summary-bar-chip mat-icon,
+mat-chip.summary-bar-chip .summary-bar-chip-result {
+  color: #fff;
+}
+
+mat-chip.summary-bar-chip.COMPLETE,
+mat-chip.summary-bar-chip.PASS {
+  background-color: #4caf50;
+}
+
+mat-chip.summary-bar-chip.ERROR,
+mat-chip.summary-bar-chip.FAIL {
+  background-color: #ff5252;
+}
+
+mat-chip.summary-bar-chip.UNKNOWN,
+mat-chip.summary-bar-chip.SKIPPED,
+mat-chip.summary-bar-chip.NOT_APPLICABLE {
+  background-color: #fb8c00;
+}
+
+mat-chip.summary-bar-chip mat-icon {
+  font-size: 16px;
+  height: 16px;
+  margin-right: 2px;
+  width: 16px;
+}
+
+.summary-bar-content-left {
+  display: flex;
+  flex: 1;
+}

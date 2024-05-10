@@ -1,0 +1,37 @@
+.hardware-components .filter-bar {
+  display: flex;
+  padding: 0px 12px;
+  align-items: center;
+  gap: 12px;
+}
+
+.hardware-components table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+.hardware-components .mat-form-field {
+  font-size: 14px;
+  min-width: 200px;
+  width: 30%;
+}
+
+.hardware-components .filter-bar .mat-mdc-text-field-wrapper {
+  background-color: inherit;
+}
+
+.hardware-components .filter-bar input:focus {
+  background: none;
+}
+
+.hardware-components .filter-bar .mat-mdc-text-field-wrapper {
+  padding-left: 0px;
+}
+
+.hardware-components .filter-bar .mat-mdc-form-field-focus-overlay {
+  background-color: transparent;
+}
+.hardware-components .mdc-data-table__cell {
+  overflow-wrap: break-word;
+}
