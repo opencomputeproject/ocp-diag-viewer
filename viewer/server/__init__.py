@@ -15,9 +15,10 @@ def load_config(app):
 
     elif os.environ.get("GOOGLE_CLOUD_PROJECT", None):
         project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
+        secret_name = os.environ.get("GOOGLE_CLOUD_SECRET_NAME")
 
         client = secretmanager.SecretManagerServiceClient()
-        name = f"projects/{project_id}/secrets/meltan_result_viewer/versions/latest"
+        name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
         payload = client.access_secret_version(name=name).payload.data.decode(
             "UTF-8"
         )

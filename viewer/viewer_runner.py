@@ -32,8 +32,6 @@ SEVERITY_LEVEL = {"FATAL": 5, "ERROR": 4, "WARNING": 3, "INFO": 2, "DEBUG": 1}
 
 PASTEBIN = "/google/src/head/depot/eng/tools/pastebin"
 
-MELTAN_RESULT_VIEWER_URL = "https://meltan-380203.de.r.appspot.com"
-
 
 def wrap_color(severity: str) -> str:
     return COLORS[severity] + severity + COLORS["RESET"]
@@ -221,21 +219,3 @@ def serve(
             f"http://{httpd.server_name}:{httpd.server_port}"
         )
         httpd.serve_forever()
-
-
-def upload(filepath: str):
-    """Uploads a OCP Diag Result Viewer to GCS and provides a link to view it on the FE.
-
-    Args:
-      filepath: The path of the file to upload
-
-    """
-    response = requests.post(
-        f"{MELTAN_RESULT_VIEWER_URL}/upload",
-        files={"file": open(filepath, "rb")},
-    )
-    if response.status_code == 200:
-        share_id = response.json()["share_id"]
-        return f"{MELTAN_RESULT_VIEWER_URL}/view/{share_id}"
-    else:
-        return f"Request failed with status {response.status_code}. Response content:\n{response.text}"
